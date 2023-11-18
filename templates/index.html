@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Chat Application</title>
@@ -31,7 +30,7 @@
                 if(data.error) {
                     alert(data.error);
                 } else {
-                    document.getElementById('answer').textContent = data.answer;
+                    document.getElementById('answer').textContent = data.response;
                 }
             });
         });
