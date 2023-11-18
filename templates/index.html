@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Application</title>
+    <!-- Include Bootstrap CSS or other stylesheets here -->
+</head>
+<body>
+    <h2>Ask your tax-related question:</h2>
+<form id="questionForm">
+    <textarea id="question" placeholder="Type your tax-related question here..."></textarea><br>
+    <input type="submit" value="Ask">
+</form>
+
+<h3>Answer:</h3>
+<div id="answer"></div>
+
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            const question = document.getElementById('question').value;
+            
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'question=' + encodeURIComponent(question)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.error) {
+                    alert(data.error);
+                } else {
+                    document.getElementById('answer').textContent = data.answer;
+                }
+            });
+        });
+        </script>
+</body>
+</html>
