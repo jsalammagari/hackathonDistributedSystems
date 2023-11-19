@@ -1,5 +1,5 @@
 # hackathonDistributedSystems
-# About the project
+**About the project**
 
 **Project Overview:**
 The Macroeconomics Chat Application is an innovative platform designed to provide instant, accurate responses to inquiries related to macroeconomics. This application uniquely blends advanced AI capabilities with a comprehensive database of macroeconomic literature to deliver a user-friendly and informative experience.
@@ -36,7 +36,7 @@ The Macroeconomics Chat Application stands out as a cutting-edge tool for educat
 
 
 # Architecture
-
+![macroEconomicsDistArchitecture](https://github.com/jsalammagari/hackathonDistributedSystems/assets/143347797/b6e78d31-c342-411b-bd2a-9b02c0fce9ab)
 
 # Installation Steps
 Follow these steps to set up your environment:
@@ -64,4 +64,7 @@ pip install openai
 flask run -p 6001
 ```
 
+![macroEconomicsChatApp](https://github.com/jsalammagari/hackathonDistributedSystems/assets/143347797/25d828dd-a38c-4fe4-8dd8-a1543efa5f3e)
+
 The demo of the entire application can be accessed [here](https://drive.google.com/file/d/1_DvwratYo_si82v0Xj1gkR3taL-w-LSx/view?usp=drive_link).
+
