@@ -68,3 +68,5 @@ flask run -p 6001
 
 The demo of the entire application can be accessed [here](https://drive.google.com/file/d/1_DvwratYo_si82v0Xj1gkR3taL-w-LSx/view?usp=drive_link).
 
+The prompts and the prompt responses can be accessed [here](https://drive.google.com/file/d/1j1fYv_dZLzcBKBpVVuc3uPmOM_HINITs/view?usp=sharing).
+
