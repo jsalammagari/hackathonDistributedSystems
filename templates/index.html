@@ -1,7 +1,6 @@
-<html>
+<!-- <html>
 <head>
     <title>Chat Application</title>
-    <!-- Include Bootstrap CSS or other stylesheets here -->
 </head>
 <body>
     <h2>Macroeconomist Chat Assistant:</h2>
@@ -35,5 +34,105 @@
             });
         });
         </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Macroeconomics Chat Application</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        #chat-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        #chat-window {
+            height: 500px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .chat-message {
+            padding: 5px 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+        }
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #e9ecef;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;margin-top: 40px;">Macroeconomist Chat Assistant</h2>
+    <div id="chat-container">
+        <div id="chat-window"></div>
+        <form id="questionForm" class="form-inline">
+            <textarea id="question" class="form-control mr-2" rows="2" style="width: 85%;" placeholder="Type your macroeconomics related question here..."></textarea>
+            <button type="submit" class="btn btn-primary">Ask</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            const question = document.getElementById('question').value;
+            const chatWindow = document.getElementById('chat-window');
+
+            // Add user's question to chat window
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('chat-message', 'user-message');
+            userMessage.textContent = question;
+            chatWindow.appendChild(userMessage);
+
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'question=' + encodeURIComponent(question)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.error) {
+                    alert(data.error);
+                } else {
+                    // Add bot's response to chat window
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('chat-message', 'bot-message');
+                    botMessage.textContent = data.response;
+                    chatWindow.appendChild(botMessage);
+                }
+                // Scroll to the latest message
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            });
+
+            // Clear input field
+            document.getElementById('question').value = '';
+        });
+    </script>
 </body>
 </html>

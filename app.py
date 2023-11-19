@@ -24,7 +24,7 @@ recommender = None
 app = Flask(__name__, static_url_path='', static_folder='.')
 
 OPENAI_API_URL = 'https://api.openai.com/v1/engines/davinci/completions'
-openai.api_key = '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'
+openai.api_key = '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'
 
 # SQLite Database setup
 DATABASE = 'chatbot.db'
@@ -254,7 +254,7 @@ def ask():
         # Search in PDF documents
         response = ask_file(question)#search_pdf_docs(question)
 
-        if response=='Text Not Found in PDF':
+        if response=='Text Not Found in PDF.':
             # Finally, query OpenAI
             response = get_response_from_openai(question)
             # Store the new query and response in the database
