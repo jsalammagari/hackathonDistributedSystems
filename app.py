@@ -24,7 +24,7 @@ recommender = None
 app = Flask(__name__, static_url_path='', static_folder='.')
 
 OPENAI_API_URL = 'https://api.openai.com/v1/engines/davinci/completions'
-openai.api_key = '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'
+openai.api_key = <your openai api key>
 
 # SQLite Database setup
 DATABASE = 'chatbot.db'
@@ -78,7 +78,6 @@ def get_response_from_openai(query):
         prompt=query, 
         max_tokens=150
         )
-        #answer = response.choices[0].text.strip()
         answer = response['choices'][0]['text'].strip().lstrip('?\n')
         return answer
     except openai.error.OpenAIError as e:
@@ -194,7 +193,6 @@ def generate_text(prompt, engine="text-davinci-003"):
         prompt=prompt, 
         max_tokens=150
         )
-        #answer = response.choices[0].text.strip()
         answer = response['choices'][0]['text'].strip().lstrip('?\n')
         return answer
     except openai.error.OpenAIError as e:
